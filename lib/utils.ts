@@ -60,7 +60,9 @@ export const formatPrice = (price: string) => {
 export function formUrlQuery({ params, key, value }: UrlQueryParams) {
   const currentUrl = qs.parse(params)
 
-  currentUrl[key] = value
+  if(currentUrl[key] !== undefined) {
+    currentUrl[key] = value
+  }
 
   return qs.stringifyUrl(
     {
